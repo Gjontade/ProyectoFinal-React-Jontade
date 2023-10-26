@@ -23,7 +23,7 @@ function NavBar() {
 						<Nav.Link as={Link} to='/'>INICIO</Nav.Link>
 						<Nav.Link as={Link} to='/empresa'>EMPRESA</Nav.Link>
 						<Nav.Link as={Link} to='/contacto'>CONTACTO</Nav.Link>
-						<NavDropdown title="PRODUCTOS" id="basic-nav-dropdown">
+						<NavDropdown title="PRODUCTOS" to='/category' id="basic-nav-dropdown">
 							<NavDropdown.Item as={NavLink} activeClassName='active' to='/category/Proteinas' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Proteinas</NavDropdown.Item>
 							<NavDropdown.Item as={NavLink} activeClassName='active' to='/category/Aminoacidos' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Aminoacidos</NavDropdown.Item>
 							<NavDropdown.Item as={NavLink} activeClassName='active' to='/category/Termogenicos' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Termogenicos</NavDropdown.Item>
@@ -42,7 +42,7 @@ function NavBar() {
 					</Form>  
 				</Navbar.Collapse>
 			</Container>
-			<CartWidget />
+			<NavLink style={{TextDecoration: 'none'}} to='/cart'><CartWidget /></NavLink>
 		</Navbar>
 	);
 }

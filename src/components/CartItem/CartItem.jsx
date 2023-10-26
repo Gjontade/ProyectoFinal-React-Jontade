@@ -1,29 +1,19 @@
-import Button from 'react-bootstrap/Button'
-//import { FaRegTrashAlt } from 'react-icons/fa'
+import React, {useContext} from 'react';
+import { CartContext } from '../../Context/CartContext';
+import Button from 'react-bootstrap/Button';
 
-function CartItem ({ product, index, handleRemove }) {
-    const itemsFullPrice = product.price * product.quantity
+const CartItem = ({item}) => {
+  const {removeItem} = useContext(CartContext)
     return (
-      <article className="inCartItem">
-        <div className="inCartItem_container">
-          <div className="inCartItemImgContainer">
-            <img src={product.pictureUrl} className="img-fluid" alt={`imagen de ${product.title}`}/>
-          </div>
-          <div className="inCartItem_container_text">
-            <h3>{product.title}</h3>
-            <p>
-              <span>
-                {itemsFullPrice.toLocaleString("en", {
-                  style: "currency",
-                  currency: "ARS"
-                })}
-              </span>
-            </p>
-          </div>
-        </div>
-            <Button variant="danger" onClick={() => handleRemove(index)}><FaRegTrashAlt/></Button>
-      </article>
+      <div>
+        <img src={item.img} alt={item.name} width={50} />
+        <p>Producto : {item.name}</p>
+        <p>Precio : ${item.price}</p>
+        <p>Cantidad : {item.quantity}</p>
+        <p>Sub Total : ${item.quantity * item.price}</p>
+        <Button className='btn btn-danger' onClick={() => removeItem(item.id)}>x</Button>
+      </div>
     );
   };
 
-export default CartItem
+export default CartItem;

@@ -1,57 +1,69 @@
-import React from 'react';
-import { useState, useEffect } from "react";
-import { getProducts, getProductByCategory } from '../../asyncMock';
-import ItemList from '../ItemList/ItemList';
-import { useParams } from "react-router-dom";
-import { Container } from 'react-bootstrap';
+import React, {useState, useEffect} from "react";
+import {getProducts, getProductByCategory} from "../../asyncMock";
+import ItemList from "../ItemList/ItemList";
+import {useParams} from "react-router-dom";
+import "./ItemListContainer.css";
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {db} from "../../servises/firebase/firebaseConfig";
 
-const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState ([])
-  const { categoryId } = useParams()
+const ItemListContainer = ({greeting}) => {
+	const [products, setProducts] = useState([]); // Inicializa productos como un array vacio
+	const [loading, setLoading] = useState(true);
+	const {categoryId} = useParams();
 
-  useEffect (() => {
-    const asyncFunc = categoryId ? getProductByCategory : getProducts
+	// useEffect (() => {
+	//   setLoading(true)
 
-    asyncFunc(categoryId)
-      .then(response => {
-        setProducts(response)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  }, [categoryId])
+	//   const collectionRef = categoryId
+	//     ? query(collection(db, 'products'), where('category', '==', categoryId))
+	//     : collection(db, 'products')
 
-  /*return (
-    <div>
-      <h1>{ greeting }</h1>
-      <ItemList products = {products} />
-    </div>
-    )*/
-  return (
-    <div className='item-list-container'>
-    {
-      (() => {
-        switch (categoryId) {
-          case 'proteinas' :
-            return <h2>Proteínas</h2>;
-          case 'aminoacidos' :
-            return <h2>Aminoácidos</h2>;
-          case 'termogenicos' :
-            return <h2>Termogénicos</h2>;
-          case 'pre-entreno' :
-            return <h2>Pre-Entreno</h2>;
-          case 'fuerza y resistencia' :
-            return <h2>Fuerza y Resistencia</h2>;
-          case 'ganador de masa' :
-            return <h2>Ganador de Masa</h2>;
-          default:
-            return <h2>{greeting}</h2>;
-        }
-      }) ()
-    }
-    {products ? <ItemList products = {products} /> : <h6><spinner animation='border' size='sm' /> cargando productos...</h6>}
-    </div>
-  )
-}
+	//   getDocs(collectionRef)
+	//     .then(response => {
+	//       const productsAdapted = response.docs.map(doc => {
+	//         const data = doc.data()
+	//         return { id: doc.id, ...data }
+	//       })
+	//       setProducts(productsAdapted)
+	//     })
+	//     .catch(error => {
+	//       console.log(error)
+	//     })
+	//     .finally(() => {
+	//       setLoading(false)
+	//     })
+	// }, [categoryId]);
+
+	useEffect(() => {
+		setLoading(true);
+
+		const coleccionProductos = categoryId
+			? query(collection(db, "productos"), where("category", "==", categoryId))
+			: collection(db, "productos");
+
+		getDocs(coleccionProductos)
+			.then(res => {
+				const list = res.docs.map(product => {
+          const data = product.data()
+					return {
+						id: product.id,
+						...data,
+					};
+				});
+				setProducts(list);
+			})
+			.catch((error) => console.log(error))
+			.finally(() => setLoading(false));
+	}, [categoryId]);
+
+	return (
+		<div>
+			<h1>{greeting}</h1>
+			{Array.isArray(products) && products.length > 0 && (
+				<ItemList products={products} />
+			)}
+		</div>
+	);
+};
 
 export default ItemListContainer;
