@@ -2,12 +2,15 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./components/Home/Home"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {CartProvider} from "./Context/CartContext";
 import Cart from "./components/Cart/Cart";
-//import Checkout
+import Empresa from "./components/Empresa";
+import Contacto from "./components/Contacto";
+import Checkout from "./components/Cheackout/Checkout";
 
 function App() {
 	// useEffect(() => {
@@ -22,17 +25,17 @@ function App() {
 					<Routes>
 						<Route
 							path="/"
-							element={<ItemListContainer greeting={"¡BIENVENIDOS!"} />}
+							element={<Home />}
 						/>
-						<Route path="/empresa" element={<h1>EMPRESA</h1>} />
-						<Route path="/contacto" element={<h1>CONTACTO</h1>} />
+						<Route path="/empresa" element={<Empresa />} />
+						<Route path="/contacto" element={<Contacto />} />
 						<Route
 							path="/category/:categoryId"
 							element={<ItemListContainer />}
 						/>
 						<Route path="/item/:id" element={<ItemDetailContainer />} />
 						<Route path="/cart" element={<Cart />} />
-						{/* <Route path="/checkout" element={<Checkout />} /> */}
+						<Route path="/checkout" element={<Checkout />} />
 						<Route path="*" element={<h1>404 NOT FOUND</h1>} />
 					</Routes>
 				</BrowserRouter>

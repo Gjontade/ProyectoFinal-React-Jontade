@@ -5,18 +5,7 @@ import {Link} from "react-router-dom";
 import CartItem from "../CartItem/CartItem";
 
 const Cart = () => {
-	const {cart, clearCart, totalQuantity, total} = useContext(CartContext);
-
-	if (totalQuantity === 0) {
-		return (
-			<div>
-				<h1>No hay items en el carrito</h1>
-				<Link to="/" className="Option">
-					Productos
-				</Link>
-			</div>
-		);
-	}
+	const {cart, clearCart, total} = useContext(CartContext);
 
 	return (
 		<div>
@@ -29,10 +18,10 @@ const Cart = () => {
 							onClick={() => clearCart()}
 							style={{color: "black"}}
 							className="Button">
-							Limpiar carrito
+							Vaciar carrito
 						</button>
 						<Link to="/checkout" className="Option">
-							Cheackout
+							Finalizar compra
 						</Link>
 					</div>
 				</div>
