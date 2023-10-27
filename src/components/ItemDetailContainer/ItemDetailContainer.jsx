@@ -12,26 +12,6 @@ const ItemDetailContainer = () => {
 	const [loader, setLoader] = useState(false);
 	const {id} = useParams();
 
-	// useEffect(() => {
-	// 	getProductById(itemId)
-	// 		.then(response => {
-	// 			setProduct(response);
-	// 		})
-	// 		.catch(error => {
-	// 			console.error(error);
-	// 		});
-	// }, [itemId]);
-
-	// useEffect(() => {
-	// 	setLoader(true);
-
-	// 	const collectionProd = collection(db, "productos");
-	// 	const referenciaAlDoc = doc(collectionProd, id);
-	// 	getDoc(referenciaAlDoc)
-	// 		.then((res) => setProduct({id: res.id, ...res}))
-	// 		.catch((error) => console.log(error))
-	// 		.finally(() => setLoader(false));
-	// }, [id]);
 
 	useEffect(() => {
 		setLoader(true);

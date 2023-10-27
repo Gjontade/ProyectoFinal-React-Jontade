@@ -6,8 +6,8 @@ import {db} from "../../servises/firebase/firebaseConfig";
 const Checkout = () => {
 	const [user, setUser] = useState({});
 	const [validateEmail, setValidateEmail] = useState("");
-	const [orderId, setOrderId] = useState("");
 	const [cart, total, clearCart] = useContext(CartContext);
+	const [orderId, setOrderId] = useState("");
 
 	const datosComprador = (e) => {
 		setUser({
@@ -19,7 +19,7 @@ const Checkout = () => {
 	const finalizarCompra = (e) => {
 		e.preventDefault();
 		if (!user.name && user.phone) {
-			alert("los campos son obligatorios");
+			alert("Los campos son obligatorios");
 		} else {
 			let order = {
 				user,
