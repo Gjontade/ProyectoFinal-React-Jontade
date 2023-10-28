@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import "./Checkout.css";
 import {addDoc, collection, serverTimestamp} from "firebase/firestore";
 import {CartContext} from "../../Context/CartContext";
 import {db} from "../../servises/firebase/firebaseConfig";
@@ -6,7 +7,7 @@ import {db} from "../../servises/firebase/firebaseConfig";
 const Checkout = () => {
 	const [user, setUser] = useState({});
 	const [validateEmail, setValidateEmail] = useState("");
-	const [cart, total, clearCart] = useContext(CartContext);
+	const {cart, total, clearCart} = useContext(CartContext);
 	const [orderId, setOrderId] = useState("");
 
 	const datosComprador = (e) => {
@@ -40,13 +41,21 @@ const Checkout = () => {
 	return (
 		<div>
 			{orderId !== "" ? (
-				<div>
-					<h2>Felicitaciones, tu orden fue generada con exito!</h2>
+				<div className="divCheckout">
+					<h2>
+						<strong>¡Felicitaciones, tu orden fue generada con exito!</strong>
+					</h2>
 					<h5>Su id de registro es: {orderId}</h5>
+					<img
+						src="https://goldnutrition.com.ar/images/2018/04/03/logo_empresa_gold_nutrition.png"
+						alt="logo de marca"
+					/>
 				</div>
 			) : (
-				<div>
-					<h2>Terminar Compra</h2>
+				<div className="divCheckout">
+					<h2>
+						<strong>Terminar Compra</strong>
+					</h2>
 					<h4>Por favor completar con sus datos</h4>
 					<form onSubmit={finalizarCompra}>
 						<div className="mb-3">

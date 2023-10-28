@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./ItemDetailContainer.css";
-import {getProductById} from "../../asyncMock";
-import Item from "../Item/Item";
+// import {getProductById} from "../../asyncMock";
 import {useParams} from "react-router-dom";
 import {collection, doc, getDoc} from "firebase/firestore";
 import {db} from "../../servises/firebase/firebaseConfig";
@@ -11,7 +10,6 @@ const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
 	const [loader, setLoader] = useState(false);
 	const {id} = useParams();
-
 
 	useEffect(() => {
 		setLoader(true);

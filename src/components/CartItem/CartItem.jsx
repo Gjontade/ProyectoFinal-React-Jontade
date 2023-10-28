@@ -7,7 +7,7 @@ const CartItem = ({item}) => {
 	const {removeItem} = useContext(CartContext);
 	return (
 		<div className="divCartItem">
-			{/* <img src={item.img} alt={item.name} className="imgCartItem" /> */}
+			<img src={item.img} alt={item.name} className="imgCartItem" />
 			<p className="detalleCartItem"><strong>{item.name}</strong></p>
 			<p className="detalleCartItem">${item.price}</p>
 			<p className="detalleCartItem">{item.quantity}</p>

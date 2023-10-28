@@ -15,6 +15,7 @@ const ItemDetail = ({id, name, img, price, stock, category, description}) => {
 			id,
 			name,
 			price,
+			img
 		};
 		addItem(item, quantity);
 	};
@@ -41,13 +42,6 @@ const ItemDetail = ({id, name, img, price, stock, category, description}) => {
 				) : (
 					<ItemCount initial={1} stock={stock} onAdd={handledOnAdd} />
 				)}
-				{/* {quantityAdded === "" ? (
-					<ItemCount initial={1} stock={stock} onAdd={handledOnAdd} />
-				) : (
-					<Link to="/cart" className="OptionDetail">
-						Terminar Compra
-					</Link>
-				)} */}
 			</footer>
 		</article>
 	);

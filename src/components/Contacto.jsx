@@ -16,6 +16,12 @@ function Contacto() {
       </Form.Group>
       <Button variant='warning'>Enviar</Button>
     </Form>
+    <picture>
+				<img
+					src="https://goldnutrition.com.ar/images/2018/04/03/logo_empresa_gold_nutrition.png"
+					alt="logo de marca" style={{width: 400, marginTop: 50}}
+				/>
+			</picture>
     </Container>
 
   )

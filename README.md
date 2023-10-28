@@ -1,3 +1,76 @@
+# Trabajo final React.Js - Gold Nutrition - Coderhouse
+
+### Gonzalo Federico Jontade
+
+## ## Instrucciones de instalación
+
+``` 
+	npm install
+	npm run start
+```
+
+### `npm start`
+
+Abrir navegador en [localhost](http://localhost:3000)
+
+# Documentación de mi aplicación de React
+
+La aplicación de React es un e-commerce sobre suplementos deportivos que permite a los usuarios navegar por productos, agregarlos al carrito y realizar compras autenticadas. La autenticación de usuarios se maneja a través de Firebase. Los componentes se organizan de manera efectiva para proporcionar una experiencia de compra completa.
+
+### Componente App
+
+El componente raíz de tu aplicación. Utiliza React Router para manejar las rutas y renderiza otros componentes, como NavBar, Routes, BrowserRouter y CartProvider.
+
+### Componente ItemListContainer
+
+Este componente muestra una lista de productos. Dependiendo de la categoría seleccionada, filtra los productos y los muestra en tarjetas. También permite agregar productos al carrito.
+
+### Componente ItemDetailContainer
+
+Este componente muestra los detalles de un producto específico. Permite al usuario ver la descripción, precio, stock y agregar el producto al carrito.
+
+### Componente Cart
+
+Muestra el contenido del carrito de compras, el total de la compra y botones para vaciar el carrito o finalizar la compra, según el estado actual del carrito. También proporciona un enlace para que el usuario pueda volver a la página de compras si el carrito está vacío.
+
+### Componente CheckOut
+
+Este componente permite a los usuarios realizar el proceso de pago de los productos en el carrito. Los usuarios deben completar su nombre y apellido, teléfono y mail para finalizar la compra. Después de la compra, se genera un número de pedido y se muestra al usuario.
+
+### Componente Home
+
+El componente principal de la página de inicio. Muestra un carrusel de bienvenida (CarouselBienvenida) y una lista de productos (ItemListContainer).
+
+### Contexto CartContext
+
+Este contexto proporciona datos y funciones a los componentes relacionados con el carrito de compras.
+
+### CartProvider
+
+Este componente envuelve toda la aplicación y proporciona el contexto CartContext a todos los componentes. Ayuda a gestionar el estado global de la aplicación y proporciona funciones para agregar productos al carrito, eliminar productos, vaciar el carrito, entre otros.
+
+## Resumen de las bibliotecas y frameworks que utilicé en la aplicación de React:
+
+Estas bibliotecas y frameworks son fundamentales para el desarrollo de la aplicación, ya que simplifican tareas como la gestión de rutas, la creación de una interfaz de usuario atractiva y la comunicación con una base de datos en la nube.
+
+### React Router:
+
+Es una biblioteca que se utiliza para manejar la navegación y las rutas en una aplicación React. Permite definir rutas y componentes asociados para crear una navegación fluida y amigable.
+
+### Firebase:
+
+Es una plataforma de desarrollo de aplicaciones móviles y web desarrollada por Google. Utilizo Firebase para autenticar a los usuarios, almacenar datos de productos en una base de datos y gestionar las órdenes de compra.
+
+### React Bootstrap:
+
+Biblioteca que proporciona componentes de interfaz de usuario preestilizados basados en Bootstrap para aplicaciones de React. Te ayuda a crear una interfaz de usuario atractiva y receptiva sin tener que escribir CSS personalizado.
+
+
+### FirebaseUI:
+
+Facilita la integración de Firebase para autenticación de usuarios.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
